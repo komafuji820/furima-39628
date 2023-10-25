@@ -11,7 +11,7 @@
 | first_name         | string  | null: false |
 | ruby_last_name     | string  | null: false |
 | ruby_first_name    | string  | null: false |
-| birthday           | integer | null: false |
+| birthday           | date    | null: false |
 
 ### Association
 
@@ -24,18 +24,25 @@
 | -------------- | ---------- | ------------------------------ |
 | name           | string     | null: false                    |
 | explain        | text       | null: false                    |
-| category       | string     | null: false                    |
-| condition      | string     | null: false                    |
-| shipping_cost  | string     | null: false                    |
-| address        | string     | null: false                    |
-| shipping_days  | string     | null: false                    |
 | price          | integer    | null: false                    |
 | user           | references | null: false, foreign_key: true |
+| category_id    | integer    | null: false                    |
+| condition_id   | integer    | null: false                    |
+| cost_id        | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| span_id        | integer    | null: false                    |
+
 
 ### Association
 
 - has_one :purchase
 - belongs_to :user
+- belongs_to :category
+- belongs_to :condition
+- belongs_to :cost
+- belongs_to :prefecture
+- belongs_to :span
+
 
 ## purchases テーブル
 
@@ -54,14 +61,15 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| post_code      | integer    | null: false                    |
-| prefecture     | string     | null: false                    |
+| post_code      | string     | null: false                    |
 | municipalities | string     | null: false                    |
 | house_number   | string     | null: false                    |
 | house_name     | string     |                                |
-| phone_number   | integer    | null: false                    |
+| phone_number   | string     | null: false                    |
 | purchase       | references | null: false, foreign_key: true |
+| prefecture_id  | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :purchase
+- belongs_to :prefecture
