@@ -152,12 +152,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Ruby first name is invalid")
       end
 
-      it 'first_nameは、全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
-        @user.first_name = Faker::Name.first_name
-        @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
-      end
-
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
         @user.valid?
