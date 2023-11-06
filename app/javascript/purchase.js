@@ -1,19 +1,26 @@
-function calcTax(price){
-  const tax = 0.1
-  return Math.floor(price * tax)
+const calcTax = (price) => {
+  const tax = 0.1;
+  return Math.floor(price * tax);
 };
 
-function calcProfit(price){
-  const profit = price - calcTax(price)
-  return Math.floor(profit)
+const calcProfit = (price) => {
+  const profit = price - calcTax(price);
+  return Math.floor(profit);
 };
 
-const inputPrice = document.getElementById('item-price');
-const taxPrice = document.getElementById('add-tax-price');
-const profit = document.getElementById('profit');
+const purchase = () => {
+  
+  const itemPrice = document.getElementById('item-price');
+  
+  itemPrice.addEventListener('input', () => {
+    const price = itemPrice.value;
 
-inputPrice.addEventListener('input', () => {
-  const price = inputPrice.value
-  taxPrice.innerHTML = calcTax(price)
-  profit.innerHTML = calcProfit(price)
-});
+    const taxPrice = document.getElementById('add-tax-price');
+    const profit = document.getElementById('profit');
+    
+    taxPrice.innerHTML = calcTax(price);
+    profit.innerHTML = calcProfit(price);
+  });
+}
+
+window.addEventListener('turbo:load', purchase);
