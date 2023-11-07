@@ -35,31 +35,31 @@ RSpec.describe Item, type: :model do
       it 'priceが空では出品できない' do
         @item.price = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
       it 'priceが300円未満では出品できない' do
         @item.price = Faker::Number.between(from: 0, to: 299)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
       it 'priceが10,000,000円以上では出品できない' do
         @item.price = Faker::Number.number(digits: 8)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
       it 'priceが全角では出品できない' do
         @item.price = '30０'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
       it 'priceが数値以外では出品できない' do
         @item.price = Faker::Lorem.characters(number: 7, min_alpha: 1, min_numeric: 1)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       
       it 'category_idが未入力(id:1)では出品できない' do
