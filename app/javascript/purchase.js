@@ -24,3 +24,4 @@ const purchase = () => {
 }
 
 window.addEventListener('turbo:load', purchase);
+window.addEventListener('turbo:render', purchase);
