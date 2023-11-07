@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, :explain, presence: true
-  validates :price, numericality: { in: (300..9999999), only_integer: true, message: "can't be blank" }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
   validates :category_id, :condition_id, :cost_id, :prefecture_id, :span_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :image, presence: true
 
