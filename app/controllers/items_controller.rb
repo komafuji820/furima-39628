@@ -29,6 +29,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to item_path(item)
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :explain, :price, :image, :category_id, :condition_id, :cost_id, :prefecture_id, :span_id).merge(user_id: current_user.id)
