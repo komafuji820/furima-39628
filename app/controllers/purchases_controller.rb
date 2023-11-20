@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @purchase_address = PurchaseAddress.new
     @item = Item.find(params[:item_id])
-    if current_user.id == @item.user_id
+    if (current_user.id == @item.user_id) || (@item.purchase != nil)
       redirect_to root_path
     end
   end
