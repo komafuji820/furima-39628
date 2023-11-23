@@ -19,7 +19,7 @@ const pay = () => {
         const token = response.id
         const tokenObj = `<input value=${token} name='token' type='hidden'>`
         form.insertAdjacentHTML('beforeend', tokenObj);
-      };
+      }
       numberElement.clear();
       expiryElement.clear();
       cvcElement.clear();

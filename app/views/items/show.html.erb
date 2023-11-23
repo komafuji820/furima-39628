@@ -33,7 +33,7 @@
 
     <% if user_signed_in? && current_user.id != @item.user_id %>
       <% if @item.purchase == nil %>
-      <%= link_to "購入画面に進む", item_purchases_path(@item.id) ,class:"item-red-btn"%>
+      <%= link_to "購入画面に進む", item_purchases_path(@item.id), data:{turbo: false}, class:"item-red-btn"%>
       <% end %>
     <% end %>
 
