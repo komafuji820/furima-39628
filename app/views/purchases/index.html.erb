@@ -33,7 +33,7 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap', model: @purchase_address, url: item_purchases_path, local: true do |f| %>
+    <%= form_with id: 'charge-form', class: 'transaction-form-wrap', model: @purchase_address, url: item_purchases_path, data: { turbo_method: :delete }, local: true do |f| %>
     <%= render partial: 'shared/error_messages', locals:{ model: @purchase_address} %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
