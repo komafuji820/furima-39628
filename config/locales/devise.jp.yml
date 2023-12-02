@@ -1,9 +1,4 @@
 ja:
-  date:
-    order:
-    - :year
-    - :month
-    - :day
   activerecord:
     attributes:
       user:
