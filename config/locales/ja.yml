@@ -10,7 +10,7 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
-        birthday: 誕生日
+        birthday: 生年月日
         last_name: 苗字
         first_name: 名前
         ruby_last_name: フリガナ(苗字)
